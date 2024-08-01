@@ -32,6 +32,7 @@
 #include "FrameDrawer.h"
 #include "MapDrawer.h"
 #include "Atlas.h"
+#include "Map.h"
 #include "LocalMapping.h"
 #include "LoopClosing.h"
 #include "KeyFrameDatabase.h"
@@ -176,6 +177,14 @@ public:
     int GetTrackingState();
     std::vector<MapPoint*> GetTrackedMapPoints();
     std::vector<cv::KeyPoint> GetTrackedKeyPointsUn();
+    Frame GetInitialFrame();
+    vector<cv::KeyPoint> GetInitialKeys();
+    vector<int> GetInitialMatches();
+    Frame GetCurrentFrame();
+    vector<KeyFrame*> GetAllKeyFrames();
+    vector<MapPoint*> GetAllMapPoints();
+    vector<MapPoint*> GetReferenceMapPoints();
+    bool IsMapOptimized();
 
     // For debugging
     double GetTimeFromIMUInit();

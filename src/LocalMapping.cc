@@ -1518,5 +1518,9 @@ KeyFrame* LocalMapping::GetCurrKF()
 {
     return mpCurrentKeyFrame;
 }
+bool LocalMapping::isMapOptimized()
+{
+    return mbOptimizedMap;
+}
 
 } //namespace ORB_SLAM

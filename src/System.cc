@@ -1545,5 +1545,54 @@ string System::CalculateCheckSum(string filename, int type)
     return checksum;
 }
 
+Frame System::GetInitialFrame()
+{
+    unique_lock<mutex> lock(mMutexState);
+    return mpTracker->mInitialFrame;
+}
+
+vector<cv::KeyPoint> System::GetInitialKeys()
+{
+    unique_lock<mutex> lock(mMutexState);
+    return mpTracker->mInitialFrame.mvKeys;
+}
+
+
+vector<int> System::GetInitialMatches()
+{
+    unique_lock<mutex> lock(mMutexState);
+    return mpTracker->mvIniMatches;
+}
+
+Frame System::GetCurrentFrame()
+{
+    unique_lock<mutex> lock(mMutexState);
+    return mpTracker->mCurrentFrame;
+}
+
+vector<KeyFrame*> System::GetAllKeyFrames()
+{
+    unique_lock<mutex> lock(mMutexState);
+    return mpAtlas->GetAllKeyFrames();
+}
+
+
+vector<MapPoint*> System::GetAllMapPoints()
+{
+    unique_lock<mutex> lock(mMutexState);
+    return mpAtlas->GetAllMapPoints();
+}
+
+vector<MapPoint*> System::GetReferenceMapPoints()
+{
+    unique_lock<mutex> lock(mMutexState);
+    return mpAtlas->GetReferenceMapPoints();
+}
+
+bool System::IsMapOptimized()
+{
+    unique_lock<mutex> lock(mMutexState);
+    return mpLocalMapper->isMapOptimized();
+}
 } //namespace ORB_SLAM
 

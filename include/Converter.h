@@ -28,6 +28,8 @@
 
 #include "Thirdparty/Sophus/sophus/geometry.hpp"
 #include "Thirdparty/Sophus/sophus/sim3.hpp"
+#include "Thirdparty/Sophus/sophus/se3.hpp"
+
 
 namespace ORB_SLAM3
 {
@@ -46,6 +48,7 @@ public:
     static cv::Mat toCvMat(const g2o::SE3Quat &SE3);
     static cv::Mat toCvMat(const g2o::Sim3 &Sim3);
     static cv::Mat toCvMat(const Eigen::Matrix<double,4,4> &m);
+    static cv::Mat toCvMat(const Sophus::SE3f &se3);
     static cv::Mat toCvMat(const Eigen::Matrix<float,4,4> &m);
     static cv::Mat toCvMat(const Eigen::Matrix<float,3,4> &m);
     static cv::Mat toCvMat(const Eigen::Matrix3d &m);

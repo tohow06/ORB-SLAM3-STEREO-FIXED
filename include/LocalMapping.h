@@ -71,6 +71,7 @@ public:
     void RequestFinish();
     bool isFinished();
 
+    bool isMapOptimized();
     int KeyframesInQueue(){
         unique_lock<std::mutex> lock(mMutexNewKFs);
         return mlNewKeyFrames.size();
@@ -173,7 +174,9 @@ protected:
 
     bool mbStopped;
     bool mbStopRequested;
-    bool mbNotStop;
+        bool mbNotStop;
+
+    bool mbOptimizedMap;
     std::mutex mMutexStop;
 
     bool mbAcceptKeyFrames;

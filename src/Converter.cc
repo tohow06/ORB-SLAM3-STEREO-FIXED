@@ -62,6 +62,16 @@ cv::Mat Converter::toCvMat(const g2o::Sim3 &Sim3)
     return toCvSE3(s*eigR,eigt);
 }
 
+cv::Mat Converter::toCvMat(const Sophus::SE3f& se3)
+{
+    Eigen::Matrix<float,4,4> m = se3.matrix();
+    cv::Mat cvMat(4,4,CV_32F);
+    for(int i=0; i<4; i++)
+        for(int j=0; j<4; j++)
+            cvMat.at<float>(i,j) = m(i,j);
+    return cvMat.clone();
+}
+
 cv::Mat Converter::toCvMat(const Eigen::Matrix<double,4,4> &m)
 {
     cv::Mat cvMat(4,4,CV_32F);
